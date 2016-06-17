@@ -1,0 +1,28 @@
+﻿  main.cpp
+e:\c++ projects\textrpg\textrpg\magicien.h(7): error C2061: syntax error: identifier 'string'
+e:\c++ projects\textrpg\textrpg\main.cpp(15): error C2661: 'Personnage::Personnage': no overloaded function takes 3 arguments
+e:\c++ projects\textrpg\textrpg\main.cpp(16): error C2661: 'Personnage::Personnage': no overloaded function takes 3 arguments
+e:\c++ projects\textrpg\textrpg\main.cpp(20): error C2039: 'afficherEtat': is not a member of 'Personnage'
+  e:\c++ projects\textrpg\textrpg\personnage.h(8): note: see declaration of 'Personnage'
+e:\c++ projects\textrpg\textrpg\main.cpp(21): error C2039: 'afficherEtat': is not a member of 'Personnage'
+  e:\c++ projects\textrpg\textrpg\personnage.h(8): note: see declaration of 'Personnage'
+  Voleur.cpp
+e:\c++ projects\textrpg\textrpg\voleur.cpp(6): error C2600: 'Voleur::Voleur': cannot define a compiler-generated special member function (must be declared in the class first)
+e:\c++ projects\textrpg\textrpg\voleur.cpp(11): error C2600: 'Voleur::~Voleur': cannot define a compiler-generated special member function (must be declared in the class first)
+  Personnage.cpp
+e:\c++ projects\textrpg\textrpg\personnage.cpp(17): error C2600: 'Personnage::~Personnage': cannot define a compiler-generated special member function (must be declared in the class first)
+  Magicien.cpp
+e:\c++ projects\textrpg\textrpg\magicien.h(7): error C2061: syntax error: identifier 'string'
+e:\c++ projects\textrpg\textrpg\magicien.cpp(6): error C2511: 'Magicien::Magicien(std::string)': overloaded member function not found in 'Magicien'
+  e:\c++ projects\textrpg\textrpg\magicien.h(4): note: see declaration of 'Magicien'
+e:\c++ projects\textrpg\textrpg\magicien.cpp(7): error C2550: 'Magicien::{ctor}': constructor initializer lists are only allowed on constructor definitions
+  Guerrier.cpp
+e:\c++ projects\textrpg\textrpg\guerrier.cpp(6): error C2600: 'Guerrier::Guerrier': cannot define a compiler-generated special member function (must be declared in the class first)
+e:\c++ projects\textrpg\textrpg\guerrier.cpp(11): error C2600: 'Guerrier::~Guerrier': cannot define a compiler-generated special member function (must be declared in the class first)
+  Generating Code...
+  Compiling...
+  Humain.cpp
+  Generating Code...
+  Compiling...
+  Orc.cpp
+  Generating Code...

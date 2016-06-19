@@ -5,8 +5,3 @@
 Guerrier::Guerrier ()
 {
 }
-
-
-Guerrier::~Guerrier ()
-{
-}

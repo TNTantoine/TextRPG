@@ -12,13 +12,12 @@ int main ()
 			epee("Epee aiguisée",10,5),
 			masse("Masse en pierre", 10, 3);
 
-	Personnage	heros("Heros", 100, poings),
-				orc("Orc", 50, masse);
+	Personnage	heros("Heros"),
+				orc("Orc");
 
-	Magicien merlin ();
-
-	heros.afficherEtat ();
-	orc.afficherEtat ();
+	
+	heros.afficherStats ();
+	orc.afficherStats();
 	
 	system ("PAUSE");
 	return 0;

@@ -5,8 +5,3 @@
 Voleur::Voleur ()
 {
 }
-
-
-Voleur::~Voleur ()
-{
-}

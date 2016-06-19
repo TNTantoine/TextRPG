@@ -4,7 +4,7 @@
 class Magicien : public Humain
 {
 public:
-	Magicien (string nom);
+	Magicien ();
 	void heal (Personnage &cible) const;
 	void bouleDeFeu (Personnage &cible) const;
 

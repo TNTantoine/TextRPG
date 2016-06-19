@@ -3,6 +3,7 @@
 class Voleur : public Humain
 {
 public:
+	Voleur();
 	void sneakAttack (Personnage &cible) const;
 	void stealItem (Personnage &cible) const;
 

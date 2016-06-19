@@ -1,28 +1,29 @@
-﻿  main.cpp
-e:\c++ projects\textrpg\textrpg\magicien.h(7): error C2061: syntax error: identifier 'string'
-e:\c++ projects\textrpg\textrpg\main.cpp(15): error C2661: 'Personnage::Personnage': no overloaded function takes 3 arguments
-e:\c++ projects\textrpg\textrpg\main.cpp(16): error C2661: 'Personnage::Personnage': no overloaded function takes 3 arguments
-e:\c++ projects\textrpg\textrpg\main.cpp(20): error C2039: 'afficherEtat': is not a member of 'Personnage'
-  e:\c++ projects\textrpg\textrpg\personnage.h(8): note: see declaration of 'Personnage'
-e:\c++ projects\textrpg\textrpg\main.cpp(21): error C2039: 'afficherEtat': is not a member of 'Personnage'
-  e:\c++ projects\textrpg\textrpg\personnage.h(8): note: see declaration of 'Personnage'
-  Voleur.cpp
-e:\c++ projects\textrpg\textrpg\voleur.cpp(6): error C2600: 'Voleur::Voleur': cannot define a compiler-generated special member function (must be declared in the class first)
-e:\c++ projects\textrpg\textrpg\voleur.cpp(11): error C2600: 'Voleur::~Voleur': cannot define a compiler-generated special member function (must be declared in the class first)
-  Personnage.cpp
-e:\c++ projects\textrpg\textrpg\personnage.cpp(17): error C2600: 'Personnage::~Personnage': cannot define a compiler-generated special member function (must be declared in the class first)
-  Magicien.cpp
-e:\c++ projects\textrpg\textrpg\magicien.h(7): error C2061: syntax error: identifier 'string'
-e:\c++ projects\textrpg\textrpg\magicien.cpp(6): error C2511: 'Magicien::Magicien(std::string)': overloaded member function not found in 'Magicien'
-  e:\c++ projects\textrpg\textrpg\magicien.h(4): note: see declaration of 'Magicien'
-e:\c++ projects\textrpg\textrpg\magicien.cpp(7): error C2550: 'Magicien::{ctor}': constructor initializer lists are only allowed on constructor definitions
-  Guerrier.cpp
-e:\c++ projects\textrpg\textrpg\guerrier.cpp(6): error C2600: 'Guerrier::Guerrier': cannot define a compiler-generated special member function (must be declared in the class first)
-e:\c++ projects\textrpg\textrpg\guerrier.cpp(11): error C2600: 'Guerrier::~Guerrier': cannot define a compiler-generated special member function (must be declared in the class first)
-  Generating Code...
-  Compiling...
-  Humain.cpp
-  Generating Code...
-  Compiling...
-  Orc.cpp
-  Generating Code...
+﻿La génération a démarré 17/06/2016 20:00:39.
+     1>Projet "D:\Repos\TextRPG\TextRPG\TextRPG.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>ClCompile:
+         D:\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W1 /WX- /Od /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt Guerrier.cpp Humain.cpp Magicien.cpp Orc.cpp Personnage.cpp Voleur.cpp main.cpp
+         Personnage.cpp
+         Génération de code en cours...
+         Compilation en cours...
+         main.cpp
+         Voleur.cpp
+         Orc.cpp
+         Magicien.cpp
+         Humain.cpp
+         Guerrier.cpp
+         Génération de code en cours...
+       Link:
+         D:\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Repos\TextRPG\TextRPG\x64\Debug\TextRPG.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\Repos\TextRPG\TextRPG\x64\Debug\TextRPG.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Repos\TextRPG\TextRPG\x64\Debug\TextRPG.lib" /MACHINE:X64 x64\Debug\Arme.obj
+         x64\Debug\Guerrier.obj
+         x64\Debug\Humain.obj
+         x64\Debug\Magicien.obj
+         x64\Debug\main.obj
+         x64\Debug\Orc.obj
+         x64\Debug\Personnage.obj
+         x64\Debug\Voleur.obj
+         TextRPG.vcxproj -> D:\Repos\TextRPG\TextRPG\x64\Debug\TextRPG.exe
+     1>Génération du projet "D:\Repos\TextRPG\TextRPG\TextRPG.vcxproj" terminée (Build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:03.74

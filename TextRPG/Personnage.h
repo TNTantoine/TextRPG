@@ -9,6 +9,7 @@ class Personnage
 public:
 	Personnage (); //Prototype du constructeur du personnage
 	Personnage (std::string m_nom);
+	~Personnage();
 	void recevoirDegats (int nbDegats);
 	void attaquer (Personnage &cible) const;
 	

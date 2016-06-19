@@ -3,6 +3,7 @@
 class Guerrier : public Humain 
 {
 public:
+	Guerrier();
 	void chargeAttack (Personnage &cible) const;
 	void groundSmash (Personnage &cible) const;
 

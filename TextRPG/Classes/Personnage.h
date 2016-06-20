@@ -8,17 +8,23 @@ class Personnage
 {
 public:
 	Personnage (); //Prototype du constructeur du personnage
-	Personnage (std::string m_nom);
+	Personnage (std::string m_name);
+	Personnage (std::string m_name, int m_HP);
+	Personnage (std::string m_name, int m_HP, Arme m_arme);
 	~Personnage();
-	void recevoirDegats (int nbDegats);
-	void attaquer (Personnage &cible) const;
-	
-	void afficherStats () const;
+	void receiveDmg (int nbDegats);
+	void addHP (int nbHP);
+	void attack (Personnage &cible) const;
+	void changeWeapon (Arme &arme);
+	void displayStats () const;
+	std::string getName () const;
+	std::string getEquippedWeapon () const;
+	bool isAlive () const;
 
 protected:
-	int m_vie;
+	int m_HP;
 	Arme *m_arme;
-	std::string m_nom;
+	std::string m_name;
 };
 
 #endif // !DEF_PERSONNAGE

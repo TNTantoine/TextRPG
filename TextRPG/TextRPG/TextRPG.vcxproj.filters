@@ -15,51 +15,51 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Classes\Arme.cpp">
+    <ClCompile Include="..\Classes\Arme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Guerrier.cpp">
+    <ClCompile Include="..\Classes\Guerrier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Humain.cpp">
+    <ClCompile Include="..\Classes\Humain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Magicien.cpp">
+    <ClCompile Include="..\Classes\Magicien.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\main.cpp">
+    <ClCompile Include="..\Classes\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Orc.cpp">
+    <ClCompile Include="..\Classes\Orc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Personnage.cpp">
+    <ClCompile Include="..\Classes\Personnage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Classes\Voleur.cpp">
+    <ClCompile Include="..\Classes\Voleur.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Classes\Arme.h">
+    <ClInclude Include="..\Classes\Arme.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Guerrier.h">
+    <ClInclude Include="..\Classes\Guerrier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Humain.h">
+    <ClInclude Include="..\Classes\Humain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Magicien.h">
+    <ClInclude Include="..\Classes\Magicien.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Orc.h">
+    <ClInclude Include="..\Classes\Orc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Personnage.h">
+    <ClInclude Include="..\Classes\Personnage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Classes\Voleur.h">
+    <ClInclude Include="..\Classes\Voleur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

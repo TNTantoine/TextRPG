@@ -4,16 +4,16 @@
 
 using namespace std;
 
-Arme::Arme () : m_nom ("Arme par defaut"), m_degats(0), m_valeur(0)
+Arme::Arme () : m_name ("Puny fists"), m_degats(1), m_value(0)
 {
 	
 }
 
-Arme::Arme (string nom, int degats, int valeur)
+Arme::Arme (string name, int degats, int valeur)
 {
 	m_degats = degats;
-	m_valeur = valeur;
-	m_nom = nom;
+	m_value = valeur;
+	m_name = name;
 }
 
 int Arme::getDegats () const
@@ -21,14 +21,24 @@ int Arme::getDegats () const
 	return m_degats;
 }
 
-void Arme::changer (string nom, int degats, int valeur)
+string Arme::getName () const
 {
-	m_nom = nom;
-	m_degats = degats;
-	m_valeur = valeur;
+	return m_name;
 }
 
-void Arme::afficher () const
+int Arme::getValue () const
 {
-	cout << "| Arme : " << m_nom << " (Degats : " << m_degats << " Valeur : " << m_valeur << ")" << endl;
+	return m_value;
+}
+
+void Arme::change (string name, int degats, int valeur)
+{
+	m_name = name;
+	m_degats = degats;
+	m_value = valeur;
+}
+
+void Arme::display () const
+{
+	cout << m_name << " (Damage : " << m_degats << " Value : " << m_value << ")" << endl;
 }

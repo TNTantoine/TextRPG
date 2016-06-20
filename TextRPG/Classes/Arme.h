@@ -7,15 +7,17 @@ class Arme
 {
 public:
 	Arme (); //Constructeur de l'arme
-	Arme (std::string nom, int degats, int valeur);
+	Arme (std::string nom, int degats, int value);
 	int getDegats () const;
-	void changer (std::string nom, int degats, int valeur);
-	void afficher () const;
+	std::string getName () const;
+	int getValue () const;
+	void change (std::string nom, int degats, int value);
+	void display () const;
 
-private:
+protected:
 	int m_degats;
-	int m_valeur;
-	std::string m_nom;
+	int m_value;
+	std::string m_name;
 
 };
 #endif // !DEF_ARME

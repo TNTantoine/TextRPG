@@ -7,6 +7,8 @@ class Arme
 {
 public:
 	Arme (); //Constructeur de l'arme
+	~Arme ();
+	Arme (const Arme & weaponToCopy);
 	Arme (std::string nom, int degats, int value);
 	int getDegats () const;
 	std::string getName () const;

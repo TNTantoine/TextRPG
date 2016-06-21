@@ -4,26 +4,28 @@
 #include <string>
 #include "Arme.h"
 
-class Personnage
+class Character
 {
 public:
-	Personnage (); //Prototype du constructeur du personnage
-	Personnage (std::string m_name);
-	Personnage (std::string m_name, int m_HP);
-	Personnage (std::string m_name, int m_HP, Arme m_arme);
-	~Personnage();
+	Character (); //Prototype du constructeur du personnage
+	Character (std::string m_name);
+	Character (std::string m_name, int m_HP);
+	Character (std::string m_name, int m_HP, Arme m_arme);
+	~Character ();
+	Character (const Character & characterToCopy);
 	void receiveDmg (int nbDegats);
 	void addHP (int nbHP);
-	void attack (Personnage &cible) const;
+	void attack (Character &cible) const;
 	void changeWeapon (Arme &arme);
 	void displayStats () const;
 	std::string getName () const;
+	int getHP () const;
 	std::string getEquippedWeapon () const;
 	bool isAlive () const;
 
 protected:
 	int m_HP;
-	Arme *m_arme;
+	Arme m_arme;
 	std::string m_name;
 };
 

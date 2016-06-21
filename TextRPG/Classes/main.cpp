@@ -1,9 +1,15 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <conio.h>
+#include <windows.h> 
+#include <random>
 
-#include "Personnage.h"
-#include "Magicien.h"
+#include "Character.h"
+#include "Warrior.h"
+#include "Wizard.h"
+#include "Robber.h"
+
 
 using namespace std;
 
@@ -11,15 +17,34 @@ int continueKey;
 bool isHeroTurn = false;
 
 string playerName = "";
+Character heros;
 
-Arme	fists ("Puny fists", 1, 0),
-		rustyKnife ("Rusty knife", 6, 2),
-		sharpSword ("Sharp sword", 10, 5),
-		rockMace ("Rock mace", 12, 3),
-		apocalypse ("Apocalypse", 2000, 0);
+vector<Arme> weaponList;
+vector<Character> botList;
 
+default_random_engine generator;
 
-void Fight (Personnage player, Personnage enemy)
+void Init ()
+{
+	Arme	fists ("Puny fists", 2, 0),
+			claws ("Claws", 3, 0),
+			rustyKnife ("Rusty knife", 6, 2),
+			sharpSword ("Sharp sword", 10, 5),
+			rockMace ("Rock mace", 3, 1),
+			magicStick ("Magic Stick", 4, 4),
+			apocalypse ("Apocalypse", 2000, 0);
+
+	weaponList = { fists, rustyKnife , sharpSword, rockMace, apocalypse };
+
+	Character	slime ("Slime", 10),
+		kobold ("Kobold", 15, weaponList[1]),
+		zombie ("Zombie", 20, weaponList[1]),
+		orc ("Orc", 30, weaponList[4]);
+
+	botList = { slime, kobold, zombie ,orc };
+}
+
+void Fight (Character player, Character enemy)
 {
 	cout << "A wild " << enemy.getName () << " jumped on your path !" << endl;
 
@@ -33,23 +58,29 @@ void Fight (Personnage player, Personnage enemy)
 	if (continueKey == 'A')
 	{
 		cout << "Thee wanteth to square the " << enemy.getName () << " !" << endl;
-		cout << "Thee determination destabilizeth the " << enemy.getName () << " ! Thou shall strike first !" << endl;
+		Sleep (1000);
+		cout << "Thee determination destabilizeth the " << enemy.getName () << " ! Thou shall strike first !" << endl << endl;
+		Sleep (1000);
 		player.attack (enemy);
+		Sleep (1000);
 		isHeroTurn = false;
 	}
 	else
 	{
 		cout << "The " << enemy.getName () << " block'd the way, thee cannot escapeth !" << endl;
-		cout << "The " << enemy.getName () << " sees thee hesitation and engages first !" << endl;
+		Sleep (1000);
+		cout << "The " << enemy.getName () << " sees thee hesitation and engages first !" << endl << endl;
+		Sleep (1000);
 		enemy.attack (player);
+		Sleep (1000);
 		isHeroTurn = true;
 	}
 
-	while (enemy.isAlive () && player.isAlive())
+	while (enemy.isAlive () && player.isAlive ())
 	{
 		if (isHeroTurn)
 		{
-			cout << "(A)ttack or (F)lee ?" << endl;
+			cout << "(A)ttack or (F)lee ?" << endl << endl;
 			do
 			{
 				continueKey = _getch ();
@@ -59,16 +90,31 @@ void Fight (Personnage player, Personnage enemy)
 			if (continueKey == 'A')
 			{
 				player.attack (enemy);
+				Sleep (1000);
 			}
 			else
 			{
-				cout << "The " << enemy.getName () << " block'd the way, thee cannot escapeth !" << endl;
+				uniform_int_distribution<int> distributionFlee (0, 1);
+				int rngFlee = distributionFlee (generator);
+				cout << "Rolled the dice for flee : " << rngFlee << endl;
+				if (rngFlee >= 5)
+				{
+					cout << "The " << enemy.getName () << " block'd the way, thee cannot escapeth !" << endl;
+					Sleep (500);
+				}	
+				else
+				{
+					cout << "Thou cowardly fled the " << enemy.getName () << " !" << endl << endl;
+					Sleep (500);
+					return;
+				}
 			}
 			isHeroTurn = false;
 		}
 		else
 		{
 			enemy.attack (player);
+			Sleep (2000);
 			isHeroTurn = true;
 		}
 	}
@@ -76,6 +122,7 @@ void Fight (Personnage player, Personnage enemy)
 	if (!player.isAlive ())
 	{
 		cout << "Thou got slained by the " << enemy.getName () << " !" << endl;
+		Sleep (1000);
 		cout << "May thee soul resteh is peace..." << endl << endl;
 	}
 
@@ -83,8 +130,22 @@ void Fight (Personnage player, Personnage enemy)
 	{
 		cout << "Thou vanquished the " << enemy.getName () << " !" << endl << endl;
 		cout << "The " << enemy.getName () << " dropped something..." << endl;
-		cout << "You found a " << rustyKnife.getName () << " !" << endl << endl;
-		cout << "(E)quip the " << rustyKnife.getName () << " or (L)eave it ?" << endl;
+		Sleep (1000);
+
+		uniform_int_distribution<int> distributionFind (0, weaponList.size()-1);
+
+		int rngFind = distributionFind (generator);
+
+		if (rngFind == weaponList.size ())
+		{
+			cout << "Your luck is beyond human comprehension, you found the " << weaponList[rngFind].getName () << " !" << endl;
+		}
+		else
+		{
+			cout << "You found a " << weaponList[rngFind].getName () << " !" << endl << endl;
+		}
+		
+		cout << "(E)quip the " << weaponList[rngFind].getName () << " or (L)eave it ?" << endl;
 
 		do
 		{
@@ -94,41 +155,67 @@ void Fight (Personnage player, Personnage enemy)
 
 		if (continueKey == 'E')
 		{
-			player.changeWeapon (rustyKnife);
+			player.changeWeapon (weaponList[rngFind]);
 		}
 		else
 		{
-			cout << "Thou left the " << rustyKnife.getName () << " and kept thee " << player.getEquippedWeapon () << endl << endl;
+			cout << "Thou left the " << weaponList[rngFind].getName () << " and kept thee " << player.getEquippedWeapon () << endl << endl;
 		}
-	}
-	else
-	{
-		cout << "Thou cowardly fled the " << enemy.getName () << " !" << endl << endl;
 	}
 }
 
-int main ()
+void Intro ()
 {
 	cout << "___________              __ ____________________  ________ " << endl;
+	//Sleep (750);
 	cout << "\\__    ___/___ ___  ____/  |\\______   \\______   \\/  _____/ " << endl;
+	//Sleep (750);
 	cout << "  |    |_/ __ \\   \\/  /\\   __\\       _/|     ___/   \\  ___ " << endl;
+	//Sleep (750);
 	cout << "  |    |\\  ___/ >    <  |  | |    |   \\|    |   \\    \\_\\  \\ " << endl;
+	//Sleep (750);
 	cout << "  |____| \\___  >__/\\_ \\ |__| |____|_  /|____|    \\______  /" << endl;
+	//Sleep (750);
 	cout << "             \\/      \\/             \\/                  \\/ " << endl << endl;
 
-	cout << "A TEXT BASED RPG EXPERIENCE" << endl << endl;
+	//Sleep (1500);
+	cout << "A TEXT BASED RPG EXPERIENCE !" << endl << endl;
+	//Sleep (1500);
+}
 
+void CharacterCreation ()
+{
 	cout << "Thee shalt typeth thy nameth :" << endl;
-		
-	cin >> playerName;
-		
-	Personnage heros (playerName, 20, fists);
 
-	cout << endl << "Welcometh to the w'rld of Agrandar warrior " << heros.getName() << " !" << endl;
+	cin >> playerName;
+
+	/*cout << "Thee shalt chooseth a class : (W)arrior - Wi(Z)ard - (R)obber" << endl;
+
+	do
+	{
+	continueKey = _getch ();
+	continueKey = toupper (continueKey);
+	} while (continueKey != 'W' && continueKey != 'Z' && continueKey != 'R');
+
+	if(continueKey == 'W')
+	Warrior heros (playerName);
+	else if(continueKey == 'Z')
+	Wizard heros (playerName);
+	else if(continueKey == 'R')
+	Robber heros (playerName);
+	*/
+
+	Character temp (playerName, 40, weaponList[0]);
+	heros = temp;
+
+
+	cout << endl << "Welcometh to the w'rld of Agrandar warrior " << heros.getName () << " !" << endl;
+	Sleep (500);
 	cout << "Lets has't a behold at thy stats" << endl << endl;
 
 	heros.displayStats ();
 
+	Sleep (500);
 	cout << "Typeth the 'Y' key to continueth" << endl << endl;
 
 	do
@@ -136,28 +223,57 @@ int main ()
 		continueKey = _getch ();
 		continueKey = toupper (continueKey);
 	} while (continueKey != 'Y');
+}
 
-	Personnage orc ("Orc", 10, fists);
-	Fight (heros, orc);
+void DemoScenario ()
+{
+	uniform_int_distribution<int> distributionEncounter (0, botList.size()-1);
+	int rngEncounter = distributionEncounter (generator);
+
+	Fight (heros, botList[rngEncounter]);
 
 	if (!heros.isAlive ())
 	{
 		heros.addHP (1);
 		cout << "To be continued ?..." << endl << endl;
 	}
-	else
+}
+
+bool CheckIfRestartGame ()
+{
+	cout << "You can now either (Q)uit the game or (C)ontinue your adventure !" << endl;
+	do
 	{
-		//Relancer un fight avec une autre creature cause un leak mémoire ???
-		////Personnage demon ("Demon", 200, apocalypse);
-		//Fight (heros, demon);
-		//heros.addHP (1);
-		//cout << "To be continued ?..." << endl << endl;
+		continueKey = _getch ();
+		continueKey = toupper (continueKey);
+	} while (continueKey != 'Q' && continueKey != 'C');
+
+	if (continueKey == 'C')
+	{
+		return true;
+	}
+
+	return false;
+}
+
+int main ()
+{
+	bool restart = true;
+
+	Init ();
+	CharacterCreation ();
+	while (restart)
+	{		
+		DemoScenario ();
+		if (!CheckIfRestartGame ())
+		{
+			restart = false;
+		}
 	}
 
 	cout << "Congratulations ! Thou finisheth the demo !" << endl << endl;
 	cout << "Don't hesitate to give the project a look at \"github.com/TNTantoine/TextRPG \"" << endl;
-	cout << "If you have ideas to improve the game, don't hesitate to do a pull request !" << endl;
-
+	cout << "If you have ideas to improve the game, don't hesitate to do a pull request !" << endl << endl;
 	system ("PAUSE");
 
 	return 0;

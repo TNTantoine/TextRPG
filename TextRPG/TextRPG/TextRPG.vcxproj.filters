@@ -18,25 +18,19 @@
     <ClCompile Include="..\Classes\Arme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Guerrier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Humain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Magicien.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Orc.cpp">
+    <ClCompile Include="..\Classes\Warrior.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Personnage.cpp">
+    <ClCompile Include="..\Classes\Wizard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Voleur.cpp">
+    <ClCompile Include="..\Classes\Robber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,22 +38,16 @@
     <ClInclude Include="..\Classes\Arme.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Guerrier.h">
+    <ClInclude Include="..\Classes\Warrior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Humain.h">
+    <ClInclude Include="..\Classes\Wizard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Magicien.h">
+    <ClInclude Include="..\Classes\Robber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Orc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Personnage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Voleur.h">
+    <ClInclude Include="..\Classes\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

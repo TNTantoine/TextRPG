@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Arme::Arme () : m_name ("Puny fists"), m_degats(1), m_value(0)
+Arme::Arme () : m_name ("nothing"), m_degats(1), m_value(0)
 {
 	
 }
@@ -14,6 +14,18 @@ Arme::Arme (string name, int degats, int valeur)
 	m_degats = degats;
 	m_value = valeur;
 	m_name = name;
+}
+
+Arme::~Arme ()
+{
+	
+}
+
+Arme::Arme (const Arme &armeToCopy)
+{
+	m_degats = armeToCopy.m_degats;
+	m_name = armeToCopy.m_name;
+	m_value = armeToCopy.m_value;
 }
 
 int Arme::getDegats () const

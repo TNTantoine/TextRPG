@@ -2,9 +2,9 @@
 #define DEF_HUMAIN
 
 #include <string>
-#include "Personnage.h"
+#include "Character.h"
 
-class Humain : public Personnage
+class Humain : public Character
 {
 public:
 	Humain ();

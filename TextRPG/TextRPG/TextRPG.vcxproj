@@ -20,22 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\Arme.cpp" />
-    <ClCompile Include="..\Classes\Guerrier.cpp" />
-    <ClCompile Include="..\Classes\Humain.cpp" />
-    <ClCompile Include="..\Classes\Magicien.cpp" />
+    <ClCompile Include="..\Classes\Warrior.cpp" />
+    <ClCompile Include="..\Classes\Wizard.cpp" />
     <ClCompile Include="..\Classes\main.cpp" />
-    <ClCompile Include="..\Classes\Orc.cpp" />
-    <ClCompile Include="..\Classes\Personnage.cpp" />
-    <ClCompile Include="..\Classes\Voleur.cpp" />
+    <ClCompile Include="..\Classes\Character.cpp" />
+    <ClCompile Include="..\Classes\Robber.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Arme.h" />
-    <ClInclude Include="..\Classes\Guerrier.h" />
-    <ClInclude Include="..\Classes\Humain.h" />
-    <ClInclude Include="..\Classes\Magicien.h" />
-    <ClInclude Include="..\Classes\Orc.h" />
-    <ClInclude Include="..\Classes\Personnage.h" />
-    <ClInclude Include="..\Classes\Voleur.h" />
+    <ClInclude Include="..\Classes\Warrior.h" />
+    <ClInclude Include="..\Classes\Wizard.h" />
+    <ClInclude Include="..\Classes\Character.h" />
+    <ClInclude Include="..\Classes\Robber.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{317C4963-E799-44BE-9292-1747AD4863AB}</ProjectGuid>

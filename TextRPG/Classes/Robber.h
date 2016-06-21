@@ -1,7 +1,6 @@
 #ifndef DEF_ROBBER
 #define	DEF_ROBBER
 
-#include <iostream>
 #include <string>
 #include "Character.h"
 

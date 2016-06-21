@@ -11,7 +11,7 @@ Character::Character () : m_name ("DefaultName"), m_HP (10)
 
 Character::Character (string name) : m_name (name), m_HP (10)
 {
-	m_name = name;
+	
 }
 
 Character::Character (string name, int hp)

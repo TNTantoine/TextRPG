@@ -14,9 +14,7 @@
 using namespace std;
 
 int continueKey;
-bool isHeroTurn = false;
 
-string playerName = "";
 Character heros;
 
 vector<Arme> weaponList;
@@ -46,6 +44,8 @@ void Init ()
 
 void Fight (Character player, Character enemy)
 {
+	bool isHeroTurn = false;
+
 	cout << "A wild " << enemy.getName () << " jumped on your path !" << endl;
 
 	cout << "(A)ttack or (F)lee ?" << endl;
@@ -187,6 +187,7 @@ void CharacterCreation ()
 {
 	cout << "Thee shalt typeth thy nameth :" << endl;
 
+	string playerName = "";
 	cin >> playerName;
 
 	/*cout << "Thee shalt chooseth a class : (W)arrior - Wi(Z)ard - (R)obber" << endl;

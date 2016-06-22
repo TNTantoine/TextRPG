@@ -1,9 +1,9 @@
 #include <iostream>
-#include <string>
 #include <vector>
 #include <conio.h>
-#include <windows.h> 
 #include <random>
+#include <chrono>
+#include <thread>
 
 #include "Character.h"
 #include "Warrior.h"
@@ -20,7 +20,7 @@ Character heros;
 vector<Arme> weaponList;
 vector<Character> botList;
 
-default_random_engine generator;
+default_random_engine generator (random_device{}());;
 
 void Init ()
 {
@@ -58,21 +58,21 @@ void Fight (Character player, Character enemy)
 	if (continueKey == 'A')
 	{
 		cout << "Thee wanteth to square the " << enemy.getName () << " !" << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		cout << "Thee determination destabilizeth the " << enemy.getName () << " ! Thou shall strike first !" << endl << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		player.attack (enemy);
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		isHeroTurn = false;
 	}
 	else
 	{
 		cout << "The " << enemy.getName () << " block'd the way, thee cannot escapeth !" << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		cout << "The " << enemy.getName () << " sees thee hesitation and engages first !" << endl << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		enemy.attack (player);
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 		isHeroTurn = true;
 	}
 
@@ -90,7 +90,7 @@ void Fight (Character player, Character enemy)
 			if (continueKey == 'A')
 			{
 				player.attack (enemy);
-				Sleep (1000);
+				std::this_thread::sleep_for (std::chrono::milliseconds (1000));
 			}
 			else
 			{
@@ -100,12 +100,12 @@ void Fight (Character player, Character enemy)
 				if (rngFlee >= 5)
 				{
 					cout << "The " << enemy.getName () << " block'd the way, thee cannot escapeth !" << endl;
-					Sleep (500);
+					std::this_thread::sleep_for (std::chrono::milliseconds (500));
 				}	
 				else
 				{
 					cout << "Thou cowardly fled the " << enemy.getName () << " !" << endl << endl;
-					Sleep (500);
+					std::this_thread::sleep_for (std::chrono::milliseconds (500));
 					return;
 				}
 			}
@@ -114,7 +114,7 @@ void Fight (Character player, Character enemy)
 		else
 		{
 			enemy.attack (player);
-			Sleep (2000);
+			std::this_thread::sleep_for (std::chrono::milliseconds (500));
 			isHeroTurn = true;
 		}
 	}
@@ -122,7 +122,7 @@ void Fight (Character player, Character enemy)
 	if (!player.isAlive ())
 	{
 		cout << "Thou got slained by the " << enemy.getName () << " !" << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (500));
 		cout << "May thee soul resteh is peace..." << endl << endl;
 	}
 
@@ -130,7 +130,7 @@ void Fight (Character player, Character enemy)
 	{
 		cout << "Thou vanquished the " << enemy.getName () << " !" << endl << endl;
 		cout << "The " << enemy.getName () << " dropped something..." << endl;
-		Sleep (1000);
+		std::this_thread::sleep_for (std::chrono::milliseconds (500));
 
 		uniform_int_distribution<int> distributionFind (0, weaponList.size()-1);
 
@@ -167,20 +167,13 @@ void Fight (Character player, Character enemy)
 void Intro ()
 {
 	cout << "___________              __ ____________________  ________ " << endl;
-	//Sleep (750);
 	cout << "\\__    ___/___ ___  ____/  |\\______   \\______   \\/  _____/ " << endl;
-	//Sleep (750);
 	cout << "  |    |_/ __ \\   \\/  /\\   __\\       _/|     ___/   \\  ___ " << endl;
-	//Sleep (750);
 	cout << "  |    |\\  ___/ >    <  |  | |    |   \\|    |   \\    \\_\\  \\ " << endl;
-	//Sleep (750);
 	cout << "  |____| \\___  >__/\\_ \\ |__| |____|_  /|____|    \\______  /" << endl;
-	//Sleep (750);
 	cout << "             \\/      \\/             \\/                  \\/ " << endl << endl;
 
-	//Sleep (1500);
 	cout << "A TEXT BASED RPG EXPERIENCE !" << endl << endl;
-	//Sleep (1500);
 }
 
 void CharacterCreation ()
@@ -211,12 +204,12 @@ void CharacterCreation ()
 
 
 	cout << endl << "Welcometh to the w'rld of Agrandar warrior " << heros.getName () << " !" << endl;
-	Sleep (500);
+	std::this_thread::sleep_for (std::chrono::milliseconds (500));
 	cout << "Lets has't a behold at thy stats" << endl << endl;
 
 	heros.displayStats ();
 
-	Sleep (500);
+	std::this_thread::sleep_for (std::chrono::milliseconds (500));
 	cout << "Typeth the 'Y' key to continueth" << endl << endl;
 
 	do
@@ -242,7 +235,7 @@ void DemoScenario ()
 
 bool CheckIfRestartGame ()
 {
-	cout << "You can now either (Q)uit the game or (C)ontinue your adventure !" << endl;
+	cout << "You can now either (Q)uit the game or (C)ontinue your adventure !" << endl <<endl;
 	do
 	{
 		continueKey = _getch ();
@@ -251,6 +244,7 @@ bool CheckIfRestartGame ()
 
 	if (continueKey == 'C')
 	{
+		system ("cls");
 		return true;
 	}
 
@@ -262,6 +256,7 @@ int main ()
 	bool restart = true;
 
 	Init ();
+	Intro ();
 	CharacterCreation ();
 	while (restart)
 	{		

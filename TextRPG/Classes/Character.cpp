@@ -1,6 +1,7 @@
 #include "Character.h"
 #include <stdlib.h>
 #include <iostream>
+#include <random>
 
 using namespace std;
 
@@ -61,10 +62,12 @@ void Character::addHP (int nbHP)
 
 void Character::attack (Character &cible) const
 {
-	int rng = rand () % 10 + 1;
-	int tempDmg = m_arme.getDegats () * rng;
+	default_random_engine generator (random_device{}());
+	uniform_int_distribution<int> distributionRngMultiplier (0, 10);
+	int rngMultiplier = distributionRngMultiplier (generator);
+	int tempDmg = m_arme.getDegats () * rngMultiplier;
 
-	cout << m_name << " attacks " << cible.m_name << " with " << m_arme.getName () << " RNG = " << rng << endl;
+	cout << m_name << " attacks " << cible.m_name << " with " << m_arme.getName () << " RNG = " << rngMultiplier << endl;
 	if (tempDmg <= 0)
 	{
 		cout << tempDmg << " : The attack missed !" << endl << endl;

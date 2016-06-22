@@ -20,7 +20,7 @@ Character heros;
 vector<Weapon> botWeaponList, droppableWeaponList;
 vector<Character> botList;
 
-default_random_engine generator (random_device{}());;
+default_random_engine generator (random_device{}());
 
 void Init ()
 {

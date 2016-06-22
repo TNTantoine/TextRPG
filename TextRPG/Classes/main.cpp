@@ -17,29 +17,90 @@ int continueKey;
 
 Character heros;
 
-vector<Weapon> weaponList;
+vector<Weapon> botWeaponList, droppableWeaponList;
 vector<Character> botList;
 
 default_random_engine generator (random_device{}());;
 
 void Init ()
 {
-	Weapon	fists ("Puny fists", 2, 0),
-			claws ("Claws", 3, 0),
-			rustyKnife ("Rusty knife", 6, 2),
-			sharpSword ("Sharp sword", 10, 5),
-			rockMace ("Rock mace", 3, 1),
-			magicStick ("Magic Stick", 4, 4),
-			apocalypse ("Apocalypse", 2000, 0);
+	Weapon
+		fists ("Puny fists", 2, 0),
+		claws ("Claws", 3, 0),
+		sharpTeeth ("Sharp teeth", 5, 0),
+		rustyKnife ("Rusty knife", 4, 2),
+		sharpSword ("Sharp sword", 10, 5),
+		rockMace ("Rock mace", 3, 1),
+		hatchet ("Hatchet", 6, 4),
+		axe ("Axe", 8, 6),
+		magicStick ("Magic stick", 4, 4),
+		hauntingWhisper ("Haunting whisper", 0, 0),
+		apocalypse ("Apocalypse", 666, 0);
 
-	weaponList = { fists, claws, rustyKnife , sharpSword, rockMace, magicStick, apocalypse };
+	droppableWeaponList = { rustyKnife , sharpSword, rockMace, hatchet, axe, magicStick };
 
-	Character	slime ("Slime", 10),
-		kobold ("Kobold", 15, weaponList[1]),
-		zombie ("Zombie", 20, weaponList[1]),
-		orc ("Orc", 30, weaponList[4]);
+	Character
+		slime ("Slime", 5),
+		rat ("Rat", 10, claws),
+		kobold ("Kobold", 15, claws),
+		zombie ("Zombie", 20, claws),
+		orc ("Orc", 30, rockMace),
+		vampire ("Vampire", 40, sharpTeeth),
+		ghost ("Ghost", 10, hauntingWhisper),
+		lucifer ("Lucifer the Doombringer", 666, apocalypse);
+		
 
-	botList = { slime, kobold, zombie ,orc };
+	botList = { slime, rat, kobold, zombie, orc, vampire, ghost, lucifer };
+}
+
+void CheckForLoot (Character player, Character enemy)
+{
+	cout << "Thou vanquished the " << enemy.getName () << " !" << endl << endl;
+
+	uniform_int_distribution<int> distributionDropRNG (0, 10);
+	int rngDrop = distributionDropRNG (generator);
+
+	//The enemy drops an object
+	if (rngDrop > 5)
+	{
+		cout << "The " << enemy.getName () << " dropped something..." << endl;
+		std::this_thread::sleep_for (std::chrono::milliseconds (500));
+
+		uniform_int_distribution<int> distributionFind (0, droppableWeaponList.size () - 1);
+
+		int rngFind = distributionFind (generator);
+
+		if (rngFind == droppableWeaponList.size ())
+		{
+			cout << "Your luck is beyond human comprehension, you found the " << droppableWeaponList[rngFind].getName () << " !" << endl;
+		}
+		else
+		{
+			cout << "You found a " << droppableWeaponList[rngFind].getName () << " !" << endl << endl;
+		}
+
+		cout << "(E)quip the " << droppableWeaponList[rngFind].getName () << " or (L)eave it ?" << endl;
+
+		do
+		{
+			continueKey = _getch ();
+			continueKey = toupper (continueKey);
+		} while (continueKey != 'E' && continueKey != 'L');
+
+		if (continueKey == 'E')
+		{
+			player.changeWeapon (droppableWeaponList[rngFind]);
+		}
+		else
+		{
+			cout << "Thou left the " << droppableWeaponList[rngFind].getName () << " and kept thee " << player.getEquippedWeapon () << endl << endl;
+		}
+	}
+	else
+	{
+		cout << "The " << enemy.getName () << " left nothing." << endl;
+	}
+	
 }
 
 void Fight (Character player, Character enemy)
@@ -104,7 +165,7 @@ void Fight (Character player, Character enemy)
 				}	
 				else
 				{
-					cout << "Thou cowardly fled the " << enemy.getName () << " !" << endl << endl;
+					cout << "Thou cowardly fled " << enemy.getName () << " !" << endl << endl;
 					std::this_thread::sleep_for (std::chrono::milliseconds (500));
 					return;
 				}
@@ -121,46 +182,14 @@ void Fight (Character player, Character enemy)
 
 	if (!player.isAlive ())
 	{
-		cout << "Thou got slained by the " << enemy.getName () << " !" << endl;
+		cout << "Thou got slained by " << enemy.getName () << " !" << endl;
 		std::this_thread::sleep_for (std::chrono::milliseconds (500));
 		cout << "May thee soul resteh is peace..." << endl << endl;
 	}
 
 	else if (!enemy.isAlive ())
 	{
-		cout << "Thou vanquished the " << enemy.getName () << " !" << endl << endl;
-		cout << "The " << enemy.getName () << " dropped something..." << endl;
-		std::this_thread::sleep_for (std::chrono::milliseconds (500));
-
-		uniform_int_distribution<int> distributionFind (0, weaponList.size()-1);
-
-		int rngFind = distributionFind (generator);
-
-		if (rngFind == weaponList.size ())
-		{
-			cout << "Your luck is beyond human comprehension, you found the " << weaponList[rngFind].getName () << " !" << endl;
-		}
-		else
-		{
-			cout << "You found a " << weaponList[rngFind].getName () << " !" << endl << endl;
-		}
-		
-		cout << "(E)quip the " << weaponList[rngFind].getName () << " or (L)eave it ?" << endl;
-
-		do
-		{
-			continueKey = _getch ();
-			continueKey = toupper (continueKey);
-		} while (continueKey != 'E' && continueKey != 'L');
-
-		if (continueKey == 'E')
-		{
-			player.changeWeapon (weaponList[rngFind]);
-		}
-		else
-		{
-			cout << "Thou left the " << weaponList[rngFind].getName () << " and kept thee " << player.getEquippedWeapon () << endl << endl;
-		}
+		CheckForLoot (player, enemy);
 	}
 }
 
@@ -199,7 +228,7 @@ void CharacterCreation ()
 	Robber heros (playerName);
 	*/
 
-	Character temp (playerName, 40, weaponList[0]);
+	Character temp (playerName, 40, droppableWeaponList[0]);
 	heros = temp;
 
 
@@ -221,11 +250,13 @@ void CharacterCreation ()
 
 void DemoScenario ()
 {
+	//RNG to determine the enemy
 	uniform_int_distribution<int> distributionEncounter (0, botList.size()-1);
 	int rngEncounter = distributionEncounter (generator);
 
 	Fight (heros, botList[rngEncounter]);
 
+	//Temporary Revive if the hero dies
 	if (!heros.isAlive ())
 	{
 		heros.addHP (1);
@@ -269,7 +300,7 @@ int main ()
 
 	cout << "Congratulations ! Thou finisheth the demo !" << endl << endl;
 	cout << "Don't hesitate to give the project a look at \"github.com/TNTantoine/TextRPG \"" << endl;
-	cout << "If you have ideas to improve the game, don't hesitate to do a pull request !" << endl << endl;
+	cout << "If you have ideas to improve the game, don't hesitate to do a fork !" << endl << endl;
 	system ("PAUSE");
 
 	return 0;

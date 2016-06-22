@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\Arme.cpp" />
+    <ClCompile Include="..\Classes\Weapon.cpp" />
     <ClCompile Include="..\Classes\Warrior.cpp" />
     <ClCompile Include="..\Classes\Wizard.cpp" />
     <ClCompile Include="..\Classes\main.cpp" />
@@ -27,7 +27,7 @@
     <ClCompile Include="..\Classes\Robber.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\Arme.h" />
+    <ClInclude Include="..\Classes\Weapon.h" />
     <ClInclude Include="..\Classes\Warrior.h" />
     <ClInclude Include="..\Classes\Wizard.h" />
     <ClInclude Include="..\Classes\Character.h" />

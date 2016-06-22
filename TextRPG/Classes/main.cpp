@@ -17,14 +17,14 @@ int continueKey;
 
 Character heros;
 
-vector<Arme> weaponList;
+vector<Weapon> weaponList;
 vector<Character> botList;
 
 default_random_engine generator (random_device{}());;
 
 void Init ()
 {
-	Arme	fists ("Puny fists", 2, 0),
+	Weapon	fists ("Puny fists", 2, 0),
 			claws ("Claws", 3, 0),
 			rustyKnife ("Rusty knife", 6, 2),
 			sharpSword ("Sharp sword", 10, 5),
@@ -32,7 +32,7 @@ void Init ()
 			magicStick ("Magic Stick", 4, 4),
 			apocalypse ("Apocalypse", 2000, 0);
 
-	weaponList = { fists, rustyKnife , sharpSword, rockMace, apocalypse };
+	weaponList = { fists, claws, rustyKnife , sharpSword, rockMace, magicStick, apocalypse };
 
 	Character	slime ("Slime", 10),
 		kobold ("Kobold", 15, weaponList[1]),

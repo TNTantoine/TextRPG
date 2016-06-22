@@ -21,10 +21,11 @@ Character::Character (string name, int hp)
 	m_HP = hp;
 }
 
-Character::Character (string name, int hp, Arme arme)
+Character::Character (string name, int hp,const Weapon &Weapon)
 {
 	m_name = name;
 	m_HP = hp;
+	m_Weapon = Weapon;
 }
 
 Character::~Character ()
@@ -36,7 +37,7 @@ Character::Character (const Character &characterToCopy)
 {
 	m_name = characterToCopy.m_name;
 	m_HP = characterToCopy.m_HP;
-	m_arme = characterToCopy.m_arme;
+	m_Weapon = characterToCopy.m_Weapon;
 }
 
 void Character::receiveDmg (int nbDegats)
@@ -65,9 +66,9 @@ void Character::attack (Character &cible) const
 	default_random_engine generator (random_device{}());
 	uniform_int_distribution<int> distributionRngMultiplier (0, 10);
 	int rngMultiplier = distributionRngMultiplier (generator);
-	int tempDmg = m_arme.getDegats () * rngMultiplier;
+	int tempDmg = m_Weapon.getDegats () * rngMultiplier;
 
-	cout << m_name << " attacks " << cible.m_name << " with " << m_arme.getName () << " RNG = " << rngMultiplier << endl;
+	cout << m_name << " attacks " << cible.m_name << " with " << m_Weapon.getName () << " RNG = " << rngMultiplier << endl;
 	if (tempDmg <= 0)
 	{
 		cout << tempDmg << " : The attack missed !" << endl << endl;
@@ -91,10 +92,10 @@ void Character::attack (Character &cible) const
 	cible.receiveDmg (tempDmg);
 }
 
-void Character::changeWeapon (Arme &nouvelleArme)
+void Character::changeWeapon (Weapon &nouvelleWeapon)
 {
-	m_arme = nouvelleArme;
-	cout << m_name << " equips the weapon " << m_arme.getName () << endl << endl;
+	m_Weapon = nouvelleWeapon;
+	cout << m_name << " equips the weapon " << m_Weapon.getName () << endl << endl;
 }
 
 void Character::displayStats () const
@@ -102,7 +103,7 @@ void Character::displayStats () const
 	cout << "-----------------------------------" << endl;
 	cout << "| Stats of " << m_name << endl;
 	cout << "| HP : " << m_HP << endl;
-	cout << "| Weapon : " << m_arme.getName () << endl;
+	cout << "| Weapon : " << m_Weapon.getName () << endl;
 	cout << "-----------------------------------" << endl << endl;
 }
 
@@ -118,7 +119,7 @@ int Character::getHP () const
 
 string Character::getEquippedWeapon () const
 {
-	return m_arme.getName ();
+	return m_Weapon.getName ();
 }
 
 bool Character::isAlive () const

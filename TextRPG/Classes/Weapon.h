@@ -1,15 +1,15 @@
-#ifndef DEF_ARME
-#define DEF_ARME
+#ifndef DEF_WEAPON
+#define DEF_WEAPON
 
 #include <string>
 
-class Arme
+class Weapon
 {
 public:
-	Arme (); //Constructeur de l'arme
-	~Arme ();
-	Arme (const Arme & weaponToCopy);
-	Arme (std::string nom, int degats, int value);
+	Weapon (); //Constructeur de l'arme
+	~Weapon ();
+	Weapon (const Weapon & weaponToCopy);
+	Weapon (std::string nom, int degats, int value);
 	int getDegats () const;
 	std::string getName () const;
 	int getValue () const;
